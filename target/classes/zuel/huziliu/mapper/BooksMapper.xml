@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zuel.huziliu.mapper.BooksMapper">
+    <select id="getBooks" resultType="zuel.huziliu.pojo.Books">
+        select * from ssmbuild.books
+    </select>
+    <select id="getBookById" resultType="zuel.huziliu.pojo.Books" parameterType="int">
+        select * from ssmbuild.books where bookID=#{bookID}
+    </select>
+    <insert id="add_a_Book" parameterType="zuel.huziliu.pojo.Books">
+        insert into ssmbuild.books (bookID,bookName,bookCounts,detail) values (#{bookID},#{bookName},#{bookCounts},#{detail})
+    </insert>
+    <delete id="delete_a_Book" parameterType="int">
+        delete from ssmbuild.books where bookID=#{bookID}
+    </delete>
+    <update id="update_a_Book" parameterType="zuel.huziliu.pojo.Books">
+        update ssmbuild.books set bookName=#{bookName},bookCounts=#{bookCounts},detail=#{detail} where bookID=#{bookID}
+    </update>
+    <select id="getBooksByName" parameterType="String" resultType="zuel.huziliu.pojo.Books">
+        select * from ssmbuild.books where bookName=#{bookName}
+    </select>
+</mapper>
